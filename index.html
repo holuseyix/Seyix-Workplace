@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Seyix Work Place</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+        nav {
+            margin: 1rem 0;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 1.1rem;
+        }
+        .search-bar {
+            margin: 1rem auto;
+            text-align: center;
+        }
+        .search-bar input {
+            padding: 0.5rem;
+            width: 80%;
+            max-width: 400px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .search-bar button {
+            padding: 0.5rem 1rem;
+            background: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .hero {
+            background: #f4f4f4;
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+        .hero a {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: #333;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 2rem;
+            background: #fff;
+        }
+        .feature {
+            flex: 1;
+            max-width: 300px;
+            margin: 1rem;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 1rem;
+            background: #f9f9f9;
+        }
+        .feature h3 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        .feature p {
+            font-size: 1rem;
+            color: #666;
+        }
+        .status {
+            background: #eaf4fc;
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: 2rem;
+        }
+        .status h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        .status p {
+            font-size: 1.2rem;
+            color: #333;
+        }
+        .countdown {
+            font-size: 1.5rem;
+            color: #007BFF;
+            margin-top: 1rem;
+        }
+        .dropdown {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+            z-index: 1000;
+        }
+        .dropdown p {
+            margin: 0.5rem 0;
+        }
+        .dropdown button {
+            padding: 0.5rem 1rem;
+            background: #ff4c4c;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .faq {
+            padding: 2rem;
+            background: #f9f9f9;
+            margin: 2rem 1rem;
+            border-radius: 10px;
+        }
+        .faq h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        .faq-item {
+            margin-bottom: 1rem;
+        }
+        .faq-item h4 {
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: #007BFF;
+            margin-bottom: 0.5rem;
+        }
+        .faq-item p {
+            display: none;
+            font-size: 1rem;
+            color: #333;
+        }
+        .live-chat {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            background: #007BFF;
+            color: #fff;
+            padding: 1rem;
+            border-radius: 50%;
+            cursor: pointer;
+            text-align: center;
+        }
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+    .chat-window {
+        position: fixed;
+        bottom: 70px;
+        right: 10px;
+        width: 300px;
+        max-width: 100%;
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        display: none;
+        flex-direction: column;
+        z-index: 1000;
+    }
+    .chat-header {
+        background: #007BFF;
+        color: #fff;
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .chat-body {
+        height: 200px;
+        overflow-y: auto;
+        padding: 10px;
+        background: #f9f9f9;
+    }
+    .chat-footer {
+        display: flex;
+        padding: 10px;
+        background: #eaf4fc;
+    }
+    .chat-footer input {
+        flex: 1;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+    .chat-footer button {
+        margin-left: 5px;
+        padding: 8px 12px;
+        background: #007BFF;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    /* Navbar */
+.navbar {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+}
+.navbar .logo img {
+    height: 50px;
+    cursor: pointer;
+}
+
+/* Slide Panel */
+.slide-panel {
+    position: fixed;
+    top: 0;
+    right: -300px; /* Hidden by default */
+    width: 300px;
+    height: 100%;
+    background-color: #444;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+    transition: 0.3s; /* Smooth sliding */
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+/* Close Button */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 24px;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Panel Content */
+.panel-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+    gap: 20px;
+}
+.panel-content button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #555;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+.panel-content button:hover {
+    background-color: #666;
+}
+@media screen and (max-width: 768px) {
+    .slide-panel {
+        width: 100%;
+            }
+}
+@media screen and (max-width: 400px) {
+    .slide-panel{
+        margin-right: -4.5rem;
+        width: 100%;
+    }
+}
+
+
+    </style>
+    <script>
+        function toggleFAQ(item) {
+            const answer = item.nextElementSibling;
+            if (answer.style.display === "block") {
+                answer.style.display = "none";
+            } else {
+                answer.style.display = "block";
+            }
+        }
+
+        function updateStatus() {
+            const now = new Date();
+            const openTime = new Date();
+            openTime.setHours(8, 0, 0, 0);
+            const closeTime = new Date();
+            closeTime.setHours(18, 0, 0, 0);
+            const day = now.getDay(); // 0 = Sunday, 6 = Saturday
+
+            const dateElement = document.getElementById('current-date');
+            const statusElement = document.getElementById('status');
+            const countdownElement = document.getElementById('countdown');
+
+            dateElement.textContent = `Today: ${now.toDateString()}`;
+
+            if (day === 0 || day === 6) {
+                statusElement.textContent = "We are Closed.";
+                countdownElement.textContent = "Closed on Saturdays and Sundays.";
+            } else if (now >= openTime && now < closeTime) {
+                statusElement.textContent = "We are Open!";
+                const timeLeft = new Date(closeTime - now);
+                const hours = timeLeft.getUTCHours();
+                const minutes = timeLeft.getUTCMinutes();
+                const seconds = timeLeft.getUTCSeconds();
+                countdownElement.textContent = `Closing in: ${hours}h ${minutes}m ${seconds}s`;
+            } else {
+                statusElement.textContent = "We are Closed.";
+                const timeUntilOpen = now < openTime ? openTime - now : openTime.setDate(openTime.getDate() + 1) - now;
+                const timeLeft = new Date(timeUntilOpen);
+                const hours = timeLeft.getUTCHours();
+                const minutes = timeLeft.getUTCMinutes();
+                const seconds = timeLeft.getUTCSeconds();
+                countdownElement.textContent = `Opening in: ${hours}h ${minutes}m ${seconds}s`;
+            }
+        }
+
+        function updateProjectCountdown() {
+            const projectEndDate = new Date();
+            projectEndDate.setDate(projectEndDate.getDate() + 26); // 30 days from now
+            const now = new Date();
+
+            const timeLeft = new Date(projectEndDate - now);
+            const days = timeLeft.getUTCDate() - 1; // Days left
+            const hours = timeLeft.getUTCHours();
+            const minutes = timeLeft.getUTCMinutes();
+            const seconds = timeLeft.getUTCSeconds();
+
+            const countdownElement = document.getElementById('project-countdown');
+            countdownElement.textContent = `Time left: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+        }
+
+        function closeDropdown() {
+            const dropdown = document.getElementById('project-dropdown');
+            dropdown.style.display = 'none';
+        }
+
+        setInterval(updateStatus, 1000);
+        setInterval(updateProjectCountdown, 1000);
+
+        function toggleChat() {
+        const chatWindow = document.getElementById('chat-window');
+        chatWindow.style.display = chatWindow.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function sendMessage(event) {
+        if (event.key === 'Enter') {
+            sendChatMessage();
+        }
+    }
+
+    function sendChatMessage() {
+        const input = document.getElementById('chat-input');
+        const message = input.value.trim();
+        if (message) {
+            const chatBody = document.getElementById('chat-body');
+            const userMessage = document.createElement('div');
+            userMessage.style.textAlign = 'right';
+            userMessage.innerText = message;
+            chatBody.appendChild(userMessage);
+
+            // Simulated bot reply
+            const botMessage = document.createElement('div');
+            botMessage.style.textAlign = 'left';
+            botMessage.innerText = "Thank you for your message! We will get back to you shortly.";
+            setTimeout(() => {
+                chatBody.appendChild(botMessage);
+                chatBody.scrollTop = chatBody.scrollHeight;
+            }, 1000);
+
+            input.value = '';
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }
+    }
+    function openSlidePanel() {
+        document.getElementById("slide-panel").style.right = "0";
+    }
+
+    function closeSlidePanel() {
+        document.getElementById("slide-panel").style.right = "-300px";
+    }
+
+
+    </script>
+</head>
+<body onload="updateStatus()">
+    <div class="dropdown" id="project-dropdown">
+        <p>Welcome to Day 4 of Seyix Work Place!</p>
+        <p>This is a 1-month project, and we will grow day by day.</p>
+        <p id="project-countdown">Calculating time...</p>
+        <button onclick="closeDropdown()">Close</button>
+    </div>
+    <header>
+        <!-- <h1>Seyix Work Place</h1> -->
+        <nav>
+            <a href="#">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <!-- <a href="contact.html">Contact</a> -->
+                <a href="#" class="logo" onclick="openSlidePanel()">
+                    <i class='bx bx-category' style='color:#ffffff'  ></i>
+                </a>
+            
+            <div id="slide-panel" class="slide-panel">
+                <a href="javascript:void(0)" class="close-btn" onclick="closeSlidePanel()">×</a>
+                <div class="panel-content">
+                    <button onclick="window.location.href='news.html'">News</button>
+                    <button onclick="window.location.href='categories.html'">Categories</button>
+                    <!-- <button onclick="window.location.href='contact.html'">Contact</button> -->
+                    <!-- <button onclick="window.location.href='blog.html'">Blog</button> -->
+                </div>
+            </div>            
+        </nav>
+    </header>
+    <div class="search-bar">
+        <input type="text" placeholder="Search...">
+        <button>Search</button>
+    </div>
+    <section class="hero">
+        <h2>Welcome to Seyix Work Place</h2>
+        <p>Your one-stop solution for Web Development, Graphic Design, and Video Editing.</p>
+        <a href="about.html">Learn More</a>
+    </section>
+    <section class="status">
+        <p id="current-date">Today: </p>
+        <h3 id="status">Checking Status...</h3>
+        <p class="countdown" id="countdown">Calculating time...</p>
+    </section>
+    <section class="features">
+        <div class="feature" onclick="openTaskManager()">
+            <h3>Task Manager</h3>
+            <p>Keep track of your daily tasks and deadlines effectively.</p>
+        </div>
+        
+        <div class="task-modal" id="task-modal">
+            <div class="task-content">
+                <h3>Task: Follow Us on Instagram</h3>
+                <p>Click the button below to visit our Instagram page and follow us.</p>
+                <a href="https://www.instagram.com/seyix_workplace/" target="_blank" class="task-button">Click Here to Complete Task</a>
+                <button onclick="verifyTask()" class="verify-button">Verify Task Completion</button>
+                <button onclick="closeTaskModal()" class="close-button">Close</button>
+            </div>
+        </div>
+        
+        <style>
+            .task-modal {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.7);
+                justify-content: center;
+                align-items: center;
+                z-index: 1000;
+            }
+            .task-content {
+                background: #fff;
+                padding: 2rem;
+                text-align: center;
+                border-radius: 10px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+                max-width: 400px;
+                margin: 0 auto;
+            }
+            .task-content h3 {
+                margin-bottom: 1rem;
+            }
+            .task-content p {
+                margin-bottom: 1.5rem;
+            }
+            .task-button,
+            .verify-button,
+            .close-button {
+                display: block;
+                margin: 0.5rem auto;
+                padding: 0.8rem 1.5rem;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+            .task-button {
+                background: #007BFF;
+                color: #fff;
+                text-decoration: none;
+            }
+            .verify-button {
+                background: #28a745;
+                color: #fff;
+            }
+            .close-button {
+                background: #ff4c4c;
+                color: #fff;
+            }
+        </style>
+        
+        <script>
+            function openTaskManager() {
+                const modal = document.getElementById('task-modal');
+                modal.style.display = 'flex';
+            }
+        
+            function closeTaskModal() {
+                const modal = document.getElementById('task-modal');
+                modal.style.display = 'none';
+            }
+        
+            function verifyTask() {
+                // Simulate task verification logic
+                const verified = confirm("Did you follow us on Instagram?");
+                if (verified) {
+                    alert("Task Completed! Thank you for following us.");
+                    closeTaskModal();
+                } else {
+                    alert("Task not verified. Please complete the task.");
+                }
+            }
+        </script>
+        
+        <div class="feature">
+            <h3>Portfolio Showcase</h3>
+            <p>Display your best work in web development, design, and editing.</p>
+        </div>
+        <div class="feature">
+            <h3>Resource Links</h3>
+            <p>Access tools, templates, and guides to boost your productivity.</p>
+        </div>
+    </section>
+    <section class="faq">
+        <h3>Frequently Asked Questions</h3>
+        <div class="faq-item">
+            <h4 onclick="toggleFAQ(this)">What services do you offer?</h4>
+            <p>We offer web development, graphic design, and video editing services.</p>
+        </div>
+        <div class="faq-item">
+            <h4 onclick="toggleFAQ(this)">How can I contact you?</h4>
+            <p>You can contact us via the contact form on the Contact page.</p>
+        </div>
+        <div class="faq-item">
+            <h4 onclick="toggleFAQ(this)">What are your working hours?</h4>
+            <p>We are open from 8 AM to 6 PM, Monday through Friday.</p>
+        </div>
+    </section>
+    <div class="live-chat" onclick="toggleChat()">
+        Chat
+    </div>
+    <div class="chat-window" id="chat-window">
+        <div class="chat-header">
+            <h4>Live Chat</h4>
+            <button onclick="toggleChat()">Close</button>
+        </div>
+        <div class="chat-body" id="chat-body">
+            <!-- Chat messages will appear here -->
+        </div>
+        <div class="chat-footer">
+            <input type="text" id="chat-input" placeholder="Type a message..." onkeypress="sendMessage(event)">
+            <button onclick="sendChatMessage()">Send</button>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2024 Seyix Work Place. All rights reserved.</p>
+    </footer>
+</body>
+</html>

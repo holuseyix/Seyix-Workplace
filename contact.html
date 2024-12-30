@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Seyix Work Place</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            background: #f9f9f9;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+        nav {
+            margin: 1rem 0;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 1.1rem;
+        }
+        .contact {
+            padding: 2rem;
+        }
+        #name{
+            width: 580px;
+        }
+        #email{
+            width: 580px;
+        }
+        #message{
+            width: 580px;
+        }
+        .contact h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        .form-group textarea {
+            height: 150px;
+        }
+        .form-group button {
+            display: block;
+            width: 100%;
+            padding: 0.8rem;
+            background: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+        .form-group button:hover {
+            background: #555;
+        }
+        .contact-info {
+            margin-top: 2rem;
+            text-align: center;
+        }
+        .contact-info p {
+            font-size: 1.1rem;
+            margin: 0.5rem 0;
+        }
+        .contact-info a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+@media(max-width: 400px) {
+    #name{
+            width: 235px;
+        }
+        #email{
+            width: 235px;
+        }
+        #message{
+            width: 235px;
+        }
+}
+.navbar {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+}
+.navbar .logo img {
+    height: 50px;
+    cursor: pointer;
+}
+
+/* Slide Panel */
+.slide-panel {
+    position: fixed;
+    top: 0;
+    right: -300px; /* Hidden by default */
+    width: 300px;
+    height: 100%;
+    background-color: #444;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+    transition: 0.3s; /* Smooth sliding */
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+/* Close Button */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 24px;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Panel Content */
+.panel-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+    gap: 20px;
+}
+.panel-content button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #555;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+.panel-content button:hover {
+    background-color: #666;
+}
+@media screen and (max-width: 768px) {
+    .slide-panel {
+        width: 100%;
+            }
+}
+@media screen and (max-width: 400px) {
+    .slide-panel{
+        margin-right: -4.5rem;
+        width: 100%;
+    }
+}
+
+    </style>
+    <script>
+        function openSlidePanel() {
+            document.getElementById("slide-panel").style.right = "0";
+        }
+    
+        function closeSlidePanel() {
+            document.getElementById("slide-panel").style.right = "-300px";
+        }
+    </script>
+    
+</head>
+<body>
+    <header>
+        <!-- <h1>Seyix Work Place</h1> -->
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="#" class="logo" onclick="openSlidePanel()">
+                <i class='bx bx-category' style='color:#ffffff'  ></i>
+            </a>
+        
+        <div id="slide-panel" class="slide-panel">
+            <a href="javascript:void(0)" class="close-btn" onclick="closeSlidePanel()">×</a>
+            <div class="panel-content">
+                <button onclick="window.location.href='news.html'">News</button>
+                <button onclick="window.location.href='categories.html'">Categories</button>
+                <!-- <button onclick="window.location.href='contact.html'">Contact</button> -->
+                <!-- <button onclick="window.location.href='blog.html'">Blog</button> -->
+            </div>
+        </div>            
+        </nav>
+    </header>
+    <section class="contact">
+        <h2>Contact Us</h2>
+        <div class="contact-form">
+            <form action="#" method="POST">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" placeholder="Write your message here" required></textarea>
+                </div>
+                <div class="form-group">
+                    <button type="submit">Send Message</button>
+                </div>
+            </form>
+        </div>
+        <div class="contact-info">
+            <p>Phone: <a href="tel:+2349047445193">+234 90 4744 5193</a></p>
+            <p>Email: <a href="mailto:holuseyix@gmail.com">holuseyix@gmail.com</a></p>
+            <p>Address: Dada-Onicar Junction, Kabba.</p>
+        </div>
+    </section>
+</body>
+</html>
